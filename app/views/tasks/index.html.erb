@@ -1,10 +1,20 @@
-<h1>hi</h1>
-
-<ul>
-  <% @tasks.each do |task| %>
-  <li>
-    <%= link_to task.title, task_path(task) %>
-    <%= task.completed %>
-  </li>
-  <% end %>
-</ul>
+<div class="container">
+  <h1>Tasks manager</h1>
+  <ul>
+    <% @tasks.each do |task| %>
+    <li class="card mt-3 p-3">
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <h4><%= link_to task.title, task_path(task) %></h4>
+        <% if task.completed %>
+          <i class="far fa-check-square"></i>
+        <% else %>
+          <i class="far fa-stop"></i>
+        <% end %>
+      </div>
+    </div>
+    </li>
+    <% end %>
+  </ul>
+  <%= link_to "Add new task", new_task_path, class:"btn btn-primary" %>
+</div>
